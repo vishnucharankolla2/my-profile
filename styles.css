@@ -9,7 +9,14 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f4f4f4;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    animation: backgroundShift 10s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundShift {
+    0% { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    100% { background: linear-gradient(135deg, #764ba2 0%, #667eea 100%); }
 }
 
 .container {
@@ -20,15 +27,29 @@ body {
 
 /* Header */
 header {
-    background-color: #2c3e50;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
     color: #fff;
     padding: 50px 0;
     text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    animation: slideInDown 1s ease-out;
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 header h1 {
     font-size: 3em;
     margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 header p {
@@ -38,21 +59,49 @@ header p {
 
 .contact p {
     margin: 5px 0;
+    transition: transform 0.3s ease;
+}
+
+.contact p:hover {
+    transform: scale(1.05);
 }
 
 .contact a {
-    color: #3498db;
+    color: #9b59b6;
     text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact a:hover {
+    color: #8e44ad;
 }
 
 /* Sections */
 section {
     padding: 50px 0;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.95);
+    margin: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+    animation: fadeInUp 1s ease-out;
+    animation-fill-mode: both;
 }
 
-section:nth-child(even) {
-    background-color: #f9f9f9;
+section:nth-child(2) { animation-delay: 0.2s; }
+section:nth-child(3) { animation-delay: 0.4s; }
+section:nth-child(4) { animation-delay: 0.6s; }
+section:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 section h2 {
@@ -60,14 +109,22 @@ section h2 {
     margin-bottom: 30px;
     font-size: 2.5em;
     color: #2c3e50;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
 /* Education and Experience */
 .education-item, .experience-item {
     margin-bottom: 30px;
     padding: 20px;
-    border-left: 5px solid #3498db;
-    background-color: #ecf0f1;
+    border-left: 5px solid #9b59b6;
+    background: linear-gradient(135deg, #ecf0f1 0%, #bdc3c7 100%);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.education-item:hover, .experience-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 .education-item h3, .experience-item h3 {
@@ -89,12 +146,19 @@ section h2 {
 }
 
 .skills-list li {
-    background-color: #3498db;
+    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
     color: #fff;
     padding: 10px 20px;
     margin: 10px;
-    border-radius: 20px;
+    border-radius: 25px;
     font-weight: bold;
+    transition: transform 0.3s ease, background 0.3s ease;
+    cursor: pointer;
+}
+
+.skills-list li:hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
 }
 
 /* Projects */
@@ -102,8 +166,14 @@ section h2 {
     margin-bottom: 30px;
     padding: 20px;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #ecf0f1;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ecf0f1 0%, #bdc3c7 100%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 .project-item h3 {
@@ -111,12 +181,34 @@ section h2 {
     margin-bottom: 10px;
 }
 
+.project-item a {
+    color: #9b59b6;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.project-item a:hover {
+    color: #8e44ad;
+}
+
 /* Footer */
 footer {
-    background-color: #2c3e50;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
     color: #fff;
     text-align: center;
     padding: 20px 0;
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.3);
+}
+
+footer p {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
 /* Responsive */
